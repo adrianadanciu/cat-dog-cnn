@@ -1,0 +1,10 @@
+Test accuracy: 0.9000
+
+              precision    recall  f1-score   support
+
+         cat      0.900     0.900     0.900       500
+         dog      0.900     0.900     0.900       500
+
+    accuracy                          0.900      1000
+   macro avg      0.900     0.900     0.900      1000
+weighted avg      0.900     0.900     0.900      1000

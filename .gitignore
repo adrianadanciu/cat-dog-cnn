@@ -1,0 +1,14 @@
+# Dataset images (regenerate with: python src/prepare_data.py)
+data/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# Virtual environments
+venv/
+.venv/
