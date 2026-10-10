@@ -6,6 +6,7 @@ The photos come from the Kaggle "Dogs vs. Cats" dataset. I use this copy of it f
 - train: 2000 cats and 2000 dogs
 - val(validation): 500 cats and 500 dogs, from the same folder as train but different photos
 - test: 500 cats and 500 dogs, from the dataset's separate test folder
+
 The test photos are not used during training at all, only at the end in `src/evaluate.py`.
 ## Model
 The model is in `src/model.py`. It has 4 convolutional blocks with 32, 64, 128 and 256 channels. Each block has two 3x3 convolutions. All photos are resized to 64x64. The original photos are much bigger, but training on them at full size would take too long on a CPU.

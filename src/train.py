@@ -28,9 +28,9 @@ def run_epoch(model, loader, criterion, optimizer, device, train: bool):
             outputs = model(images)
             loss = criterion(outputs, labels)
             if train:
-                #calculates the weights for the current batch
+                #calculates the gradients for the current batch
                 loss.backward()
-                #adjusts the gradients
+                #adjusts the weights using the gradients
                 optimizer.step()
             total_loss += loss.item() * images.size(0)
             correct += (outputs.argmax(dim=1) == labels).sum().item()
@@ -64,7 +64,7 @@ def main():
     #Adam is the optimizer
     #Adam = Adaptive Moment Estimation
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
-    #schedulere represents the rate of learning
+    #the scheduler lowers the learning rate a little after every epoch
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
     history = {"train_loss": [], "train_acc": [], "val_loss": [], "val_acc": []}
     best_val_acc = 0.0

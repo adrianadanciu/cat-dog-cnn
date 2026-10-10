@@ -4,7 +4,7 @@ class SimpleCNN(nn.Module):
         #super() is the parent class
         super().__init__()
         #conv_block = convolutional blocks
-        #channels as in RGB channels
+        #channels: 3 (RGB) for the photo, then one map for each filter
         #applied on every layer
         def conv_block(in_channels: int, out_channels: int) -> nn.Sequential:
             return nn.Sequential(
@@ -31,7 +31,7 @@ class SimpleCNN(nn.Module):
             conv_block(64, 128),
             conv_block(128, 256),
         )
-        #classifer gets the photos and decides if it s a cat or a dog
+        #the classifier gets the maps from the blocks and decides if it's a cat or a dog
         self.classifier = nn.Sequential(
             #the average for each map
             nn.AdaptiveAvgPool2d(1),
@@ -39,7 +39,7 @@ class SimpleCNN(nn.Module):
             nn.Flatten(),
             #it reduces overfitting
             nn.Dropout(dropout),
-            #Linear is the completely connected layer
+            #Linear is the fully connected layer
             nn.Linear(256, 128),
             #inplace means that it works on the spot
             nn.ReLU(inplace=True),

@@ -77,7 +77,7 @@ button{
     font-weight: 600;
     cursor: pointer;
 }
-/*means that the button starts as the disabled*/
+/*how the button looks while it is disabled*/
 button:disabled{ 
     opacity: 0.45; 
     cursor: default;
