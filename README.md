@@ -45,7 +45,7 @@ The workers only talk to the database, so you can start as many as you want, als
 The page asks the server every second how the photo is doing, so it shows when the photo is in the queue, when a worker is classifying it, and then the result.
 ## Running on AWS
 I deployed it on AWS, on the free plan. The server and two workers run on an EC2 instance (t3.small with Ubuntu), and the database is on RDS. The database is not public, so only the EC2 instance can connect to it.
-While my free plan lasts, the page is at http://51.21.249.29:8000.
+While my free plan lasts, the page is at http://16.192.249.49:8000.
 ## How to run
 ```
 pip install -r requirements.txt
