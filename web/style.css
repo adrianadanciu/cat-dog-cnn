@@ -1,0 +1,125 @@
+/*applies to all elements*/
+:root {
+    --bg: #f5f4f0;
+    --card: #ffffff;
+    --text: #1c1c1c;
+    --muted: #666660;
+    --line: #e1dfd8;
+    --accent: #2e5c4f;
+    --on-accent: #ffffff;
+    --error: #b3261e;
+}
+/*if the user uses dark mode*/
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #151515;
+        --card: #1e1e1e;
+        --text: #ececec;
+        --muted: #a3a39c;
+        --line: #34342f;
+        --accent: #86bba9;
+        --on-accent: #10201b;
+        --error: #f2b8b5;
+    }
+}
+/* * = all elements from the page*/
+* { box-sizing: border-box; }
+body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main{
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 16px 64px;
+}
+h1{ font-size: 2rem; margin: 0 0 8px; }
+h2{ font-size: 1rem; margin: 40px 0 12px; }
+header p{ margin: 0; }
+.muted{ color: var(--muted); }
+.card{
+    margin-top: 32px;
+    padding: 24px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+/* minmax(0, 1fr) lets a big photo shrink instead of pushing the page wider */
+form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.picker {
+    display: block;
+    padding: 20px;
+    border: 1px dashed var(--muted);
+    border-radius: 8px;
+    text-align: center;
+    color: var(--muted);
+    cursor: pointer;
+    overflow-wrap: anywhere;
+}
+.picker:hover { border-color: var(--accent); color: var(--text); }
+.picker input { display: none; }
+/* # chooses after id*/
+#preview {
+    justify-self: center;
+    max-width: 100%;
+    max-height: 320px;
+    border-radius: 8px;
+}
+button{
+    padding: 12px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+/*means that the button starts as the disabled*/
+button:disabled{ 
+    opacity: 0.45; 
+    cursor: default;
+}
+#result{ 
+    margin-top: 24px; 
+}
+.result-label{ 
+    margin: 0 0 8px; 
+    font-size: 1.75rem; 
+    font-weight: 700;
+}
+#result .muted{ 
+    margin: 8px 0 0;
+}
+.bar{ 
+    height: 8px; 
+    background: var(--line); 
+    border-radius: 4px; 
+    overflow: hidden;
+}
+.bar-fill{ 
+    width: 0; 
+    height: 100%; 
+    background: var(--accent); 
+    transition: width 0.4s; 
+}
+.error { margin: 16px 0 0; color: var(--error); }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; table-layout: fixed; }
+/*th = table header*/
+th:nth-child(1) { width: 36%; }
+th:nth-child(2) { width: 30%; }
+th:nth-child(3) { width: 14%; }
+th:nth-child(4) { width: 20%; }
+/*td = table data*/
+th, td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left; }
+th { color: var(--muted); font-weight: 500; }
+th:last-child, td:last-child { text-align: right; }
+td.file { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 480px){
+    th:nth-child(1), 
+    td:nth-child(1){ 
+        display: none;
+    }
+}

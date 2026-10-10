@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--tells the browser how the phone aspect looks like-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cat vs Dog</title>
+    <!--links the page with the css file-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Cat vs Dog</h1>
+            <p class="muted">Upload a photo and it will show if it's a cat or a dog.</p>
+        </header>
+        <section class="card">
+            <form id="upload-form">
+                <label class="picker">
+                    <input type="file" id="file-input" accept="image/*">
+                    <span id="picker-text">Choose a photo</span>
+                </label>
+                <img id="preview" alt="The chosen photo" hidden>
+                <button type="submit" id="submit-button" disabled>Classify</button>
+            </form>
+            <div id="result" hidden>
+                <p id="result-label" class="result-label"></p>
+                <div class="bar"><div id="result-bar" class="bar-fill"></div></div>
+                <p id="result-confidence" class="muted"></p>
+            </div>
+            <p id="error" class="error" hidden></p>
+        </section>
+        <section>
+            <h2>Stats</h2>
+            <p id="stats" class="muted">No predictions yet.</p>
+        </section>
+        <section>
+            <h2>Latest predictions</h2>
+            <table>
+                <thead>
+                    <tr><th>Time</th><th>Photo</th><th>Label</th><th>Confidence</th></tr>
+                </thead>
+                <tbody id="history"></tbody>
+            </table>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -2,10 +2,14 @@
 #asynccontextmanager is a decorator
 from contextlib import asynccontextmanager
 from datetime import datetime
+#pathlib builds file paths that work on any operating system
+from pathlib import Path
 #typing from type, which represents a data type
 from typing import Literal
 #http exception deals with web errors
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile
+#staticfiles sends the files of the web page (html, css, js) to the browser
+from fastapi.staticfiles import StaticFiles
 #pil = python imaging library
 from PIL import UnidentifiedImageError
 #pydantic checks the data
@@ -61,3 +65,8 @@ def get_prediction(prediction_id: int):
 @app.get("/stats", response_model=list[LabelStats])
 def stats():
     return db.get_stats()
+#the folder with the web page
+WEB_DIR = Path(__file__).resolve().parent.parent / "web"
+#the page is mounted last, so the api routes above are checked first
+#html=True means that the address "/" returns index.html
+app.mount("/", StaticFiles(directory=WEB_DIR, html=True), name="web")
