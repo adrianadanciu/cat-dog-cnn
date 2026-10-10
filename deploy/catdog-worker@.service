@@ -1,0 +1,16 @@
+#keeps a worker running in the background, even after the terminal is closed
+[Unit]
+Description=Cat vs Dog worker %i
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/cat-dog-cnn
+EnvironmentFile=/home/ubuntu/catdog.env
+#prints the messages right away instead of keeping them in a buffer, like flush=True
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/ubuntu/cat-dog-cnn/venv/bin/python -m api.worker
+#stops the worker the same way Ctrl+C does
+KillSignal=SIGINT
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target
