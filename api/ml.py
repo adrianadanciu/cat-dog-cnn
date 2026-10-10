@@ -1,4 +1,4 @@
-"""Loads the trained CNN once and runs it on the photos sent to the API."""
+"""Loads the trained CNN once and runs it on the photos the worker takes from the queue."""
 #io = input/output
 import io
 import sys

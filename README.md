@@ -1,12 +1,11 @@
 # Cat vs. Dog Classifier
-A CNN that I trained from scratch in PyTorch to tell if a photo shows a cat or a dog.
+A CNN that tells if a photo shows a cat or a dog.
 ## Data
 The photos come from the Kaggle "Dogs vs. Cats" dataset. I use this copy of it from GitHub, which has about 25,000 photos: [laxmimerit/dog-cat-full-dataset](https://github.com/laxmimerit/dog-cat-full-dataset).
 `src/prepare_data.py` downloads it and picks a random subset:
 - train: 2000 cats and 2000 dogs
 - val: 500 cats and 500 dogs, from the same folder as train but different photos
 - test: 500 cats and 500 dogs, from the dataset's separate test folder
-
 The test photos are not used during training at all, only at the end in `src/evaluate.py`.
 ## Model
 The model is in `src/model.py`. It has 4 convolutional blocks with 32, 64, 128 and 256 channels. Each block has two 3x3 convolutions with batch norm and ReLU, and then max pooling. After the blocks there is average pooling and two linear layers with dropout.
